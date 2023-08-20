@@ -31,7 +31,7 @@
 
 # 📖 Blog App <a name="about-project"></a>
 
-**Blog App** - is a full-featured web application built using Ruby on Rails that allows users to create, publish, and manage their blog posts. The app provides an easy-to-use interface for authors to express their thoughts, share stories, and engage with readers.
+**Blog App** - A Ruby on Rails web app for creating, publishing, and managing blog posts. Provides authors an intuitive interface to share stories, engage readers, and allows comments and likes.
 
 ## 🛠 Built With <a name="built-with"></a>
 
