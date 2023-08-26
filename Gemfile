@@ -47,6 +47,12 @@ gem 'rspec-rails', '~> 6.0', '>= 6.0.3'
 
 gem 'rails-controller-testing'
 
+# Gemfile
+gem 'sassc-rails'
+
+# Gemfile
+gem 'will_paginate'
+
 # Use Sass to process CSS
 # gem "sassc-rails"
 
