@@ -1,1 +1,25 @@
-<h1>Here is a list users</h1>
+<div class="container">
+  <h1 class="text-center mt-5 mb-4">All Users</h1>
+
+  <div class="row">
+    <% @users.each do |user| %>
+      <div class="col-md-12 mb-4">
+        <div class="card">
+          <div class="row no-gutters">
+            <div class="col-md-4">
+              <%= image_tag user.photo, class: 'card-img rounded-circle mx-auto mt-3', style: 'max-width: 120px;' %>
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <%= link_to user_path(user) do %>
+                  <h4 class="card-title user-name"><%= user.name %></h4>
+                <% end %>
+                <p class="card-text user-posts"><%= user.posts_counter %> Posts</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -1,1 +1,28 @@
-<h1>Here is a single posts for a given user</h1>
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      <div class="card">
+        <div class="card-body">
+            <div class="text-right">
+              <strong>Comments:</strong> <%= @post.comments_counter %>
+              <strong>Likes:</strong> <%= @post.likes_counter %>
+            </div>
+          <h2 class="card-title"><%= @post.title %></h2>
+          <p class="card-text"><%= @post.text %></p>
+          <p><strong>Comments:</strong></p>
+          <% @post.comments.each do |comment| %>
+            <div class="card mb-3">
+              <div class="card-body">
+                <p class="card-text"><%= comment.text %></p>
+                <p class="card-text text-muted">Comment by: <%= comment.user.name %></p>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <div class="text-center mt-3">
+        <a href="<%= user_posts_path(@user) %>" class="btn btn-primary">Back to Posts</a>
+      </div>
+    </div>
+  </div>
+</div>
