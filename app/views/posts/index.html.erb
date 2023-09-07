@@ -7,18 +7,22 @@
       <h2><%= @user.name %></h2>
       <p><%= @user.posts_counter %> Posts</p>
       <p><strong>Bio:</strong> <%= @user.bio %></p>
+      <%= link_to new_user_post_path(@user), class: "btn btn-primary mb-3" do %>
+        New Post
+      <% end %>
     </div>
   </div>
-  <% @posts.each_with_index do |post,index| %>
+  
+  <% @posts.each_with_index do |post, index| %>
     <div class="card mb-4">
       <div class="card-body">
-                  <div class="text-right">
-              <strong>Comments:</strong> <%= post.comments_counter %>
-              <strong>Likes:</strong> <%= post.likes_counter %>
-            </div>
-                    <h5 class="card-title">
-              <%= link_to " #{post.title} ##{index+1}", user_post_path(@user, post) %>
-            </h5>
+        <div class="text-right">
+          <strong>Comments:</strong> <%= post.comments_counter %>
+          <strong>Likes:</strong> <%= post.likes_counter %>
+        </div>
+        <h5 class="card-title">
+          <%= link_to " #{post.title} ##{index + 1}", user_post_path(@user, post) %>
+        </h5>
         <p class="card-text"><%= post.text %></p>
         <h6>Comments:</h6>
         <% post.recent_comments.each do |comment| %>
@@ -32,10 +36,8 @@
       </div>
     </div>
   <% end %>
-  
-<div class="pagination justify-content-center">
-  <%= will_paginate @posts, previous_label: 'Previous', next_label: 'Next', class: 'pagination-sm' %>
-</div>
 
-  
+  <div class="pagination justify-content-center">
+    <%= will_paginate @posts, previous_label: 'Previous', next_label: 'Next', class: 'pagination-sm' %>
+  </div>
 </div>

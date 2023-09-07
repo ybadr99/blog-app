@@ -18,6 +18,7 @@
               </div>
             </div>
           <% end %>
+<%= button_to "Leave a Comment", new_user_post_comment_path(@post.author, @post), class: "btn btn-primary all-posts", method: :get %>
         </div>
       </div>
       <div class="text-center mt-3">
