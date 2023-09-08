@@ -10,9 +10,9 @@ describe 'User Index Page Features', type: :feature do
     )
 
     post1 = Post.create(id: 4, title: 'Post 1', text: 'text 1', likes_counter: 0, comments_counter: 0,
-      author_id: @user1.id)
+                        author_id: @user1.id)
     post2 = Post.create(id: 5, title: 'Post 2', text: 'text 2', likes_counter: 0, comments_counter: 0,
-          author_id: @user1.id)
+                        author_id: @user1.id)
     Post.create(id: 6, title: 'Post 3', text: 'text 3', likes_counter: 0, comments_counter: 0, author_id: @user1.id)
     Post.create(id: 7, title: 'Post 4', text: 'text 4', likes_counter: 0, comments_counter: 0, author_id: @user1.id)
 
@@ -25,10 +25,8 @@ describe 'User Index Page Features', type: :feature do
 
   it 'displays the user\'s profile picture' do
     visit user_posts_path(@user1)
-    expect(page).to have_css('img[src*="' + @user1.photo + '"]')
+    expect(page).to have_css("img[src*=\"#{@user1.photo}\"]")
   end
-  
-  
 
   it 'displays the user\'s username' do
     visit user_posts_path(@user1)

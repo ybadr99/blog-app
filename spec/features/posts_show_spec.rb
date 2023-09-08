@@ -30,7 +30,6 @@ RSpec.describe 'Posts Show', type: :feature do
   end
 
   describe 'Post show page' do
-
     it 'displays the post author' do
       visit user_post_path(@user, @post.id)
       expect(page).to have_content('yousef')

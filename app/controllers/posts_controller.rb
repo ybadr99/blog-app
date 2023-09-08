@@ -16,7 +16,6 @@ class PostsController < ApplicationController
   end
 
   def new
-    @user
     render 'new'
   end
 

@@ -18,10 +18,9 @@ RSpec.describe 'User Index Page', type: :feature do
     it "displays the user's profile picture" do
       expect(page.has_xpath?("//img[@src = '#{@user.photo}' ]"))
     end
-    
 
     it 'shows the number of posts the user has written' do
-      expect(page).to have_content("#{@user.posts.count || 0}")
+      expect(page).to have_content((@user.posts.count || 0).to_s)
     end
 
     it "shows the user's bio" do
@@ -29,16 +28,10 @@ RSpec.describe 'User Index Page', type: :feature do
       expect(page).to have_content(@user.bio)
     end
 
- 
-    
-
     it 'redirects to the post show page on clicking a user post' do
       visit user_posts_path(@user)
       click_link(@post.title) # Make sure @post is defined and represents a post
       expect(page).to have_current_path(user_post_path(@user, @post))
     end
-    
-
-
   end
 end
