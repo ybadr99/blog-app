@@ -53,6 +53,8 @@ gem 'sassc-rails'
 # Gemfile
 gem 'will_paginate'
 
+  # Capybara, the library that allows us to interact with the browser using Ruby
+  gem 'capybara'
 # Use Sass to process CSS
 # gem "sassc-rails"
 

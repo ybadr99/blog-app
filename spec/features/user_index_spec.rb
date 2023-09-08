@@ -1,36 +1,39 @@
-# require 'rails_helper'
+require 'rails_helper'
 
-# RSpec.feature 'User index page', type: :feature do
-#   let!(:user1) { create(:user, name: 'Tom', photo: 'https://placehold.co/120x120') }
-#   let!(:user2) { create(:user, name: 'Binod', photo: 'https://placehold.co/120x120') }
-#   let!(:user3) { create(:user, name: 'Lilly', photo: 'https://placehold.co/120x120') }
+RSpec.describe 'User Index Page', type: :feature do
+  before(:each) do
+    @user = User.create(name: 'Doraemon & Nobita', photo: 'https://unsplash.com/photos/F_-0BxGuVvo',
+                        bio: 'Best friends', posts_counter: 12)
+  end
 
-#   scenario 'I can see the username of all users' do
-#     visit users_path
-#     expect(page).to have_content(user1.name.to_s)
-#     expect(page).to have_content(user2.name.to_s)
-#     expect(page).to have_content(user3.name.to_s)
-#   end
-#   scenario 'I can see the profile picture for each user' do
-#     visit users_path
-#     expect(page).to have_css("img[src*='https://placehold.co/120x120']")
-#     expect(page).to have_css("img[src*='https://placehold.co/120x120']")
-#     expect(page).to have_css("img[src*='https://placehold.co/120x120']")
-#   end
-#   scenario 'I can see the number of posts each user has written' do
-#     create_list(:post, 3, author: user1)
-#     create_list(:post, 5, author: user2)
-#     create_list(:post, 2, author: user3)
+  describe 'User index page' do
+    before(:each) { visit users_path }
 
-#     visit users_path
-#     expect(page).to have_content("Number of posts: #{user1.posts.count}", count: 1)
-#     expect(page).to have_content("Number of posts: #{user2.posts.count}", count: 1)
-#     expect(page).to have_content("Number of posts: #{user3.posts.count}", count: 1)
-#   end
-#   scenario "I am redirected to a user's show page when clicking on their name" do
-#     visit users_path
-#     click_link(user1.name)
-#     expect(current_path).to eq(user_path(user1))
-#     expect(page).to have_content(user1.name.to_s)
-#   end
-# end
+    it 'displays a container for the users' do
+      expect(page).to have_css('.container')
+    end
+
+    it 'displays the username of each user' do
+      User.all.each do |user|
+        expect(page).to have_content(user.name)
+      end
+    end
+
+    it 'displays the photos of each user' do
+      User.all.each do |user|
+        expect(page.has_xpath?("//img[@src = '#{user.photo}' ]"))
+      end
+    end
+
+    it 'shows the number of posts of each user' do
+      User.all.each do |_user|
+        expect(page).to have_content('Posts')
+      end
+    end
+
+    it "is redirected to that user's show page" do
+      click_link(@user.name)
+      expect(page).to have_current_path(user_path(@user.id))
+    end
+  end
+end
