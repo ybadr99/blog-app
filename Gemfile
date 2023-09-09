@@ -53,6 +53,7 @@ gem 'sassc-rails'
 # Gemfile
 gem 'will_paginate'
 
+gem 'devise', '~> 4.9', '>= 4.9.2'
 # Use Sass to process CSS
 # gem "sassc-rails"
 
