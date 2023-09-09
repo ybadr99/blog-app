@@ -11,7 +11,5 @@ class Ability
     can :destroy, Comment do |comment|
       comment.author == user || user.admin?
     end
-
   end
 end
-

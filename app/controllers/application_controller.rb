@@ -18,6 +18,6 @@ class ApplicationController < ActionController::Base
 
   # Load user abilities using CanCanCan
   def load_user_abilities
-    @user_abilities ||= Ability.new(current_user)
+    @load_user_abilities ||= Ability.new(current_user)
   end
 end

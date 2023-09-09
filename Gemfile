@@ -57,8 +57,6 @@ gem 'devise', '~> 4.9', '>= 4.9.2'
 
 gem 'cancancan', '~> 3.0'
 
-
-
 # Use Sass to process CSS
 # gem "sassc-rails"
 

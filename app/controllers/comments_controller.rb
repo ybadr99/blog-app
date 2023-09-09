@@ -1,8 +1,6 @@
 class CommentsController < ApplicationController
-
   before_action :authenticate_user!, except: [:show]
   before_action :set_comment, only: [:destroy]
-
 
   def new
     @user = current_user
