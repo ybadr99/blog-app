@@ -30,6 +30,17 @@ class PostsController < ApplicationController
     end
   end
 
+  def destroy
+    @post = @user.posts.find(params[:id])
+    authorize! :destroy, @post # Check if the user can delete the post
+
+    if @post.destroy
+      redirect_to user_posts_path(@user), notice: 'Post deleted successfully.'
+    else
+      redirect_to user_post_path(@user, @post), alert: 'Failed to delete the post.'
+    end
+  end
+
   private
 
   def find_user
